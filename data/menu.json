@@ -1,0 +1,11 @@
+{
+  "nombreApp": "Catering",
+  "rutas": [
+    {
+      "ruta": "login"
+    },
+    {
+      "ruta": "home"
+    }
+  ]
+}

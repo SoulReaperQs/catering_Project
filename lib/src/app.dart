@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_prototype/src/pages/loginScreen_page.dart';
+
+import 'package:flutter_prototype/src/home_screen.dart';
+import 'package:flutter_prototype/src/pages/drawer_pages/drawer_screen.dart';
+import 'package:flutter_prototype/src/pages/login_pages/login_Screen.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
+  // Widget para el inicio de la aplicación
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Oswald',
-        scaffoldBackgroundColor: Colors.yellow,
-      ),
       home: Scaffold(
-        body:Container(child: ScreenPage())),
-    ); 
+        body: Stack(
+          children: [
+            LoginScreen(),
+            DrawerScreen(),
+            HomeScreen(),
+          ],
+        ),
+      ),
+    );
   }
 }

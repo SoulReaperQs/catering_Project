@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_prototype/src/widget/widget_login.dart';
 
-class ScreenPage extends StatefulWidget {
-  ScreenPage({Key key}) : super(key: key);
+import 'package:sign_button/sign_button.dart';
+
+class LoginScreen extends StatefulWidget {
+  LoginScreen({Key key}) : super(key: key);
 
   @override
-  _ScreenPageState createState() => _ScreenPageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _ScreenPageState extends State<ScreenPage> {
+class _LoginScreenState extends State<LoginScreen> {
   int _pageState = 0;
   //Cambia el color de fondo
   var _backgroundColor = Colors.white;
@@ -52,9 +55,7 @@ class _ScreenPageState extends State<ScreenPage> {
       children: [
         AnimatedContainer(
           curve: Curves.fastLinearToSlowEaseIn,
-          duration: Duration(
-            milliseconds: 1000,
-          ),
+          duration: Duration(milliseconds: 1000),
           child: Container(
             color: _backgroundColor,
             child: Column(
@@ -75,7 +76,7 @@ class _ScreenPageState extends State<ScreenPage> {
                           child: Text(
                               'La cocina de autor es poner tu personalidad en lo que haces y ese sentimiento la convierte en algo distinto',
                               style: TextStyle(
-                                  color: _headingColor, fontSize: 15)))
+                                  color: _headingColor, fontSize: 20)))
                     ],
                   ),
                 ),
@@ -83,8 +84,9 @@ class _ScreenPageState extends State<ScreenPage> {
                 Container(
                   child: Center(
                       child: Image.asset(
-                    'assets/images/kindred.png',
-                    scale: 2,
+                    'assets/images/logo.jpg',
+                    height: 250,
+                    width: 250,
                   )),
                 ),
                 //Botón Iniciar seasión
@@ -100,39 +102,25 @@ class _ScreenPageState extends State<ScreenPage> {
                       });
                     },
                     child: Container(
-                      margin: EdgeInsets.all(12),
-                      padding: EdgeInsets.all(15),
-                      width: double.infinity,
+                      width: 285,
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                           color: Colors.amber,
                           borderRadius: BorderRadius.circular(30)),
                       child: Center(
-                        child: Text('INICIAR SESIÓN',
+                        child: Text('Comenzamos',
                             style:
                                 TextStyle(color: _headingColor, fontSize: 25)),
                       ),
                     ),
                   ),
                 ),
-                //Botón Resgistro
-                Container(
-                  child: Container(
-                    margin: EdgeInsets.all(12),
-                    padding: EdgeInsets.all(15),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Center(
-                      child: Text('RESGISTRARSE',
-                          style: TextStyle(color: _headingColor, fontSize: 25)),
-                    ),
-                  ),
-                )
               ],
             ),
           ),
         ),
+        //Contenedor de Iniciar Sesión
         GestureDetector(
           onTap: () {
             setState(() {
@@ -140,18 +128,71 @@ class _ScreenPageState extends State<ScreenPage> {
             });
           },
           child: AnimatedContainer(
+            padding: EdgeInsets.all(50),
             curve: Curves.fastLinearToSlowEaseIn,
-            duration: Duration(
-              milliseconds: 1000
-            ),
+            duration: Duration(milliseconds: 1000),
             transform: Matrix4.translationValues(0, _loginOffset, 1),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30))),
+            child: Column(
+              children: [
+                //TextTitle y TextBox
+                Column(
+                  children: [
+                    Container(
+                        margin: EdgeInsets.only(bottom: 15),
+                        child: Text('Iniciar Sesión',
+                            style: TextStyle(fontSize: 20))),
+                    InputWithIcon(icon: Icons.email, hint: 'Ingrese su correo'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InputWithIcon(
+                        icon: Icons.keyboard, hint: 'Ingrese su contraseña'),
+                  ],
+                ),
+                //Button
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 7,
+                    ),
+                    PrimaryButton(
+                      btnText: 'Login',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SecondaryButton(
+                      btnText: 'Volver al inicio',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SignInButton(
+                        buttonType: ButtonType.google,
+                        buttonSize: ButtonSize.large,
+                        onPressed: () {
+                          print('click');
+                        }
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SignInButton(
+                        buttonType: ButtonType.facebook, 
+                        buttonSize: ButtonSize.large,
+                        onPressed: () {}
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
-        )
+        ),
       ],
     );
   }
