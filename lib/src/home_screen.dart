@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_prototype/src/widget/widget_drawer.dart';
+import 'package:flutter_prototype/src/widget/widget_home.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 40,
                 ),
-                                NewPadding(
+                NewPadding(
                   image1: 'assets/images/arroz.png',
                   text1: 'Porción de Arroz Blanco',
                   image2: 'assets/images/tallarines.png',

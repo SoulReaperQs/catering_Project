@@ -75,8 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
                               'La cocina de autor es poner tu personalidad en lo que haces y ese sentimiento la convierte en algo distinto',
-                              style: TextStyle(
-                                  color: _headingColor, fontSize: 20)))
+                              style: TextStyle(color: _headingColor, fontSize: 20)))
                     ],
                   ),
                 ),

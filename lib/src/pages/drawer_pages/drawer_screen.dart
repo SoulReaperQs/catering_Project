@@ -96,7 +96,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 ],
               ),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
             )
           ],
